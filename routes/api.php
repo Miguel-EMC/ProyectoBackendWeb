@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Account\AvatarController;
 use App\Http\Controllers\Account\ProfileController;
+use App\Http\Controllers\Users\DirectorController;
 use Illuminate\Support\Facades\Route;
 
 // Se hace uso de grupo de rutas
@@ -25,6 +26,17 @@ Route::prefix('v1')->group(function ()
                 Route::post('/', 'store')->name('profile.store');
             });
             Route::post('/avatar', [AvatarController::class, 'store'])->name('profile.avatar');
+        });
+
+        Route::prefix("director")->group(function ()
+        {
+            Route::controller(DirectorController::class)->group(function () {
+                Route::get('/', 'index');
+                Route::post('/create', 'store');
+                Route::get('/{user}', 'show');
+                Route::post('/{user}/update', 'update');
+                Route::get('/{user}/destroy', 'destroy');
+            });
         });
     });
 });
