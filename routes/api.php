@@ -79,7 +79,7 @@ Route::prefix('v1')->group(function ()
         Route::prefix('assignment')->group(function () {
             Route::controller(GuardToWardController::class)->group(function () {
                 Route::get('/guards-and-wards', 'index');
-                Route::get('/guard-to-ward/{user}/{ward}', 'assign');
+                Route::get('/guard-to-wards/{user}/{ward}', 'assign');
             });
             Route::controller(PrisonerToJailController::class)->group(function () {
                 Route::get('/prisoners-and-jails', 'index');
