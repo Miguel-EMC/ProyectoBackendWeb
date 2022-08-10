@@ -86,6 +86,16 @@ Route::prefix('v1')->group(function ()
                 Route::get('/prisoner-to-jail/{user}/{jail}', 'assign');
             });
         });
+        Route::prefix('report')->group(function () {
+            Route::controller(ReportController::class)->group(function ()
+            {
+                Route::get('/', 'index');
+                Route::post('/create', 'store');
+                Route::get('/{report}', 'show');
+                Route::post('/{report}/update', 'update');
+                Route::get('/{report}/destroy', 'destroy');
+            });
+        });
     });
 });
 
