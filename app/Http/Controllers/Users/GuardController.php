@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GuardController extends Controller
+class GuardController extends UserController
 {
     // Se crea el constructor para el controlador
     public function __construct()
@@ -18,6 +18,8 @@ class GuardController extends Controller
         // Se establece que si puede recibir notificaciones
         $can_receive_notifications = true;
         // Se hace uso del controlador padre
-        parent::__construct($role_slug, $can_receive_notifications);
+        parent::__construct($role_slug,$can_receive_notifications);
     }
+
+
 }
