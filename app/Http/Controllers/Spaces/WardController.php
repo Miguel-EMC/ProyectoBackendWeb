@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class WardController extends Controller
 {
+
     // Creación del constructor
     public function __construct()
     {
@@ -47,6 +48,7 @@ class WardController extends Controller
         return $this->sendResponse(message: 'Ward stored successfully');
     }
 
+
     // Mostrar la información del pabellon
     public function show(Ward $ward)
     {
@@ -56,6 +58,7 @@ class WardController extends Controller
             'ward' => new WardResource($ward)
         ]);
     }
+
 
     // Actualizar la información del pabellon
     public function update(Request $request, Ward $ward)

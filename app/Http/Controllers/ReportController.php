@@ -12,11 +12,13 @@ class ReportController extends Controller
 {
     // Se procede a establecer un atributo para el manejo del directorio de las imagenes
     private string $directory_name = 'reports';
-   
-    // https://laravel.com/docs/9.x/authorization#registering-policies
-    protected $policies = [
-        Report::class => ReportPolicy::class,
-    ];
+    
+    public function __construct()
+    {
+        // https://laravel.com/docs/9.x/authorization#authorizing-resource-controllers
+        $this->authorizeResource(Report::class, 'report');
+    }
+
 
     // Métodos del Controlador
     // Listar los reportes
@@ -122,4 +124,6 @@ class ReportController extends Controller
         // Invoca el controlador padre para la respuesta json
         return $this->sendResponse(message: "Report $message successfully");
     }
+
+
 }

@@ -20,6 +20,4 @@ class DirectorController extends UserController
         // Se hace uso del controlador padre
         parent::__construct($role_slug,$can_receive_notifications);
     }
-
-
 }

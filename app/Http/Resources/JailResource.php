@@ -29,6 +29,5 @@ class JailResource extends JsonResource
             // https://laravel.com/docs/9.x/eloquent-resources#resource-collections
             'prisoners' => UserResource::collection($this->users),
         ];
-
     }
 }

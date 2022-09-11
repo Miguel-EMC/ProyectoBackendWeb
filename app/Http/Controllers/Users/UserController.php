@@ -15,11 +15,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
     // Atributo para controlar los roles
     protected string $role_slug;
 
     // Atributo para enviar notificaciones
     protected bool $can_receive_notifications;
+
 
     // Creación del constructor
     public function __construct(string $role_slug, bool $can_receive_notifications = false)
@@ -40,6 +42,7 @@ class UserController extends Controller
     }
 
 
+
     // Métodos del Controlador
     // Listar todos los usuarios
     public function index()
@@ -53,6 +56,7 @@ class UserController extends Controller
             'users' => UserResource::collection($users),
         ]);
     }
+
 
     // Crear un nuevo usuario
     public function store(Request $request)
@@ -90,6 +94,7 @@ class UserController extends Controller
 
 
 
+
     // Mostrar la información personal del usuario
     public function show(User $user)
     {
@@ -98,6 +103,7 @@ class UserController extends Controller
             'user' => new ProfileResource($user),
         ]);
     }
+
 
 
 
@@ -138,6 +144,7 @@ class UserController extends Controller
     }
 
 
+
     // Dar de baja a un usuario
     public function destroy(User $user)
     {
@@ -152,6 +159,7 @@ class UserController extends Controller
         // Invoca el controlador padre para la respuesta json
         return $this->sendResponse(message: "User $message successfully");
     }
+
 
 
 

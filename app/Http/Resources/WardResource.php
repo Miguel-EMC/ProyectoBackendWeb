@@ -26,6 +26,5 @@ class WardResource extends JsonResource
             // https://laravel.com/docs/9.x/eloquent-resources#resource-collections
             'guards' => UserResource::collection($this->users)
         ];
-
     }
 }

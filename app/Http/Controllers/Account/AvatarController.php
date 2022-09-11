@@ -32,6 +32,6 @@ class AvatarController extends Controller
         return $this->sendResponse('Avatar updated successfully');
 
     }
-
-
 }
+
+

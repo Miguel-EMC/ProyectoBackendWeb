@@ -10,12 +10,14 @@ use Illuminate\Http\Request;
 
 class JailController extends Controller
 {
+
     // Creación del constructor
     public function __construct()
     {
         // Uso del gate para que pueda gestionar las cárceles a partir del rol establecido
         $this->middleware('can:manage-jails');
     }
+
 
     // Métodos del Controlador
     // Listar las cárceles
@@ -53,6 +55,7 @@ class JailController extends Controller
         return $this->sendResponse(message: 'Jail stored successfully');
     }
 
+
     // Mostrar la información de la cárcel
     public function show(Jail $jail)
     {
@@ -62,6 +65,7 @@ class JailController extends Controller
             'jail' => new JailResource($jail)
         ]);
     }
+
 
     // Actualizar la información de la cárcel
     public function update(Request $request, Jail $jail)
@@ -80,12 +84,13 @@ class JailController extends Controller
             'description' => ['nullable', 'string', 'min:5', 'max:255'],
         ]);
 
-        // Actaliza los datos del usuario
+        // Actaliza los datos de la cárcel
         $jail->fill($jail_data)->save();
 
         // Invoca el controlador padre para la respuesta json
         return $this->sendResponse(message: 'Jail updated successfully');
     }
+
 
     // Dar de baja a una cárcel
     public function destroy(Jail $jail)
@@ -93,7 +98,7 @@ class JailController extends Controller
         // Obtener el estado de la carcel
         $jail_state = $jail->state;
 
-        // almacenar un string con el mensaje
+        // Almacenar un string con el mensaje
         $message = $jail_state ? 'inactivated' : 'activated';
 
         // Verifica que la carcel tiene prisioneros
@@ -105,7 +110,7 @@ class JailController extends Controller
 
         // Cambia el estado de la cárcel
         $jail->state = !$jail_state;
-        
+
         // Guardar en la BDD
         $jail->save();
 

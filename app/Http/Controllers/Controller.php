@@ -10,8 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-        // Función padre que va a tomar las respuestas enviadas por los controladores hijos
+
+    // Función padre que va a tomar las respuestas enviadas por los controladores hijos
     // https://php.watch/versions/8.0/mixed-type
 
     public function sendResponse(string $message, mixed $result = [], mixed $errors = [], int $code = 200)
@@ -34,3 +34,5 @@ class Controller extends BaseController
         return response()->json($response, $code);
     }
 }
+
+
